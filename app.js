@@ -48,7 +48,7 @@ var server = app.listen(3000, function () {
   var port = server.address().port;
 
   console.log('IBM app Running at http://%s:%s', host, port);
-  console.log('To view the example, point your favorite browser to: localhost:1880');
+  console.log('To view the example, point your favorite browser to: localhost:3000');
 
 });
 
