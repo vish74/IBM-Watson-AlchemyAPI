@@ -8,7 +8,16 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var AlchemyAPI = require('./alchemyapi');
+var alchemyapi = new AlchemyAPI();
+
+function entities() {
+  alchemyapi.AlchemyAPI();
+}
+
 var app = express();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
