@@ -2,7 +2,21 @@ doctype html
 html
   include header.jade
   body
-    h1 My Site
-    p Welcome to my super lame site.
-    p Copyright (c) foobar
+    h1 "Hello"
+    form.form-horizontal(method='POST' action='/user')
+      fieldset
+        // Form Name
+        legend Form Name
+        // Text input
+        .form-group
+          label.col-md-4.control-label(for='textinput') Text Input
+          .col-md-4
+            input#textinput.form-control.input-md(name='textinput', type='text', placeholder='placeholder')
+            span.help-block help
+        // Button
+        .form-group
+          label.col-md-4.control-label(for='singlebutton') Single Button
+          .col-md-4
+            button#singlebutton.btn.btn-primary(name='singlebutton') Button
+
   include footer.jade
