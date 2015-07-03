@@ -1,14 +1,22 @@
-var express = require('express');
-var router = express.Router();
+exports.index = function (req, res) {
+    var key1 = req.cookies.name;
+    if (key1) {
+     //   app.locals.textinput= key1;
+        //res.locals.user = { name : "test" };
+        res.render('index', {keydef: key1});
+    }
+    else {
+        res.render('index');
+    }
 
-router.post('/user', function (req, res, next) {
-  var sda = req.body.textinput;
-  console.log(sda);
-  next();
-});
 
-router.get('/', function(req, res) {
-  res.render('index');
-});
+};
 
-module.exports = router;
+exports.user = function (req, res) {
+    var key = req.body.textinput;
+    res.cookie('name', key, {maxAge: 900000, httpOnly: true});
+    //console.log(key);
+    res.redirect('/');
+};
+
+
