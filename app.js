@@ -22,8 +22,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 function restrict(req, res, next) {
-  if (req.body.textinput == "hello") {
-    //console.log("asdad");
+
+  //var key = req.cookies.name;
+  if (key) {
     next();
   } else {
     res.redirect('/');
@@ -31,8 +32,8 @@ function restrict(req, res, next) {
 }
 
 app.get('/', routes.index);
+app.post('/user', routes.user);
 
-app.post('/user',restrict, routes.user);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
