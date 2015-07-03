@@ -1,21 +1,22 @@
 doctype html
 html
-  include header.jade
-  body
-    h1
-    form.form-horizontal(method='POST' action='/user')
-      fieldset
-        // Form Name
-        legend=Form
-        // Text input
-        .form-group
-          label.col-md-4.control-label(for='textinput') API KEY
-          .col-md-4
-            input#textinput.form-control.input-md(name='textinput', type='text', placeholder='placeholder' maxlength="40" minlength ="40" value=keydef required)
-        // Button
-        .form-group
-          label.col-md-4.control-label(for='singlebutton')
-          .col-md-4
-            button#singlebutton.btn.btn-primary(name='singlebutton') Validate
+    include header.jade
+    body
+        h1
+        form.form-horizontal(method='POST', action='/user')
+            fieldset
+                // Form Name
+                legend
+                // Text input
+                .form-group
+                    label.col-md-4.control-label(for='textinput') API KEY
+                    .col-md-4
+                        input#textinput.form-control.input-md(name='textinput', type='text', placeholder='placeholder', maxlength='40', minlength='40', required='')
+                // Button
+                .form-group
+                    label.col-md-4.control-label(for='singlebutton')
+                    .col-md-4
+                        button#singlebutton.btn.btn-primary(name='singlebutton') Validate
+    include footer.jade
 
-  include footer.jade
+                       
