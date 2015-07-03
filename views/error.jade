@@ -1,7 +1,20 @@
 doctype html
 html
-  include header.jade
-  body
-     h1= message
-     h2= error.status
-  include footer.jade  
+    include header.jade
+    body
+        .container
+            .row
+                .col-md-12
+                    .error-template
+                        h1
+                            | Oops!
+                        h2
+                            | 404 Not Found
+                        .error-details
+                            | Sorry, an error has occurred, Requested page not found!
+                        .error-actions
+                            a.btn.btn-primary.btn-lg(href='/')
+                                span.glyphicon.glyphicon-alert
+                                |                         Take Me Home
+
+    include footer.jade
