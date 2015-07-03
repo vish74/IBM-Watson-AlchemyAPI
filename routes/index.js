@@ -1,6 +1,5 @@
 var AlchemyAPI = require('../alchemyapi');
 var alchemyapi = new AlchemyAPI();
-var assert = require('assert');
 
 exports.index = function (req, res) {
     var apikey = req.cookies.name;
@@ -35,5 +34,3 @@ exports.user = function (req, res,next) {
         res.redirect('/');
     }
 };
-
-

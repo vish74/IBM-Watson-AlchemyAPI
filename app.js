@@ -8,10 +8,6 @@ var routes = require('./routes/');
 
 var app = express();
 
-var AlchemyAPI = require('./alchemyapi');
-var alchemyapi = new AlchemyAPI();
-var assert = require('assert');
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
