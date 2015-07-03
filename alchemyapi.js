@@ -13,8 +13,6 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-
-
 var http = require('http');
 var fs = require('fs');
 
@@ -23,11 +21,6 @@ var fs = require('fs');
 exports = module.exports = AlchemyAPI;
 
 function AlchemyAPI() {
-
-
-	//Set the key
-	this.apikey = ''; //key here
-
 
 	/**
 	  *	HTTP Request wrapper that is called by the endpoint functions. This function is not intended to be called through an external interface. 
@@ -91,6 +84,7 @@ function AlchemyAPI() {
     var reqParams = "";
     var reqBody = "";
     var upload = false;
+
 
 		//Add the API key and set the output mode to JSON
 		params['apikey'] = this.apikey;
