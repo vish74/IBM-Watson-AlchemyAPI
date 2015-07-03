@@ -1,22 +1,39 @@
+var AlchemyAPI = require('../alchemyapi');
+var alchemyapi = new AlchemyAPI();
+var assert = require('assert');
+
 exports.index = function (req, res) {
-    var key1 = req.cookies.name;
-    if (key1) {
-     //   app.locals.textinput= key1;
-        //res.locals.user = { name : "test" };
-        res.render('index', {keydef: key1});
+    var apikey = req.cookies.name;
+    if (apikey) {
+        res.render('index', {keydef: apikey});
     }
     else {
         res.render('index');
     }
-
-
 };
 
-exports.user = function (req, res) {
-    var key = req.body.textinput;
-    res.cookie('name', key, {maxAge: 900000, httpOnly: true});
-    //console.log(key);
-    res.redirect('/');
+exports.user = function (req, res,next) {
+    var apikey = req.body.textinput;
+    alchemyapi.apikey = apikey;
+
+    if (apikey) {
+        var test_text = 'Bob broke my heart, and then made up this silly sentence to test the Node.js SDK';
+        alchemyapi.entities('text', test_text, null, function (response) {
+            var stat = response['status'];
+            if (stat === "OK") {
+                res.cookie('name', apikey, {maxAge: 900000, httpOnly: true});
+                res.render('index',{Form: 'CORRECT'});
+            }
+            else {
+                res.render('index',{Form: 'WRONG'});
+
+            }
+        });
+
+
+    } else {
+        res.redirect('/');
+    }
 };
 
 
