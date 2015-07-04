@@ -12,7 +12,7 @@ exports.index = function (req, res) {
 };
 
 exports.user = function (req, res,next) {
-    var apikey = req.body.textinput;
+    var apikey = req.body.keyinput;
     alchemyapi.apikey = apikey;
 
     if (apikey) {
@@ -21,14 +21,14 @@ exports.user = function (req, res,next) {
             var stat = response['status'];
             if (stat === "OK") {
                 res.cookie('name', apikey, {maxAge: 900000, httpOnly: true});
-                res.render('index',{Form: 'CORRECT'});
+                res.render('index',{status: 'CORRECT'});
+
             }
             else {
-                res.render('index',{Form: 'WRONG'});
+                res.render('index',{status: 'WRONG API KEY/ TRY AGAIN'});
 
             }
         });
-
 
     } else {
         res.redirect('/');

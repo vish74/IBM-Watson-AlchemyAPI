@@ -2,21 +2,19 @@ doctype html
 html
     include header.jade
     body
-        h1
-        form.form-horizontal(method='POST', action='/user')
+        h1=status
+        form.form-horizontal(method='POST', action='/keycheck')
             fieldset
                 // Form Name
                 legend
                 // Text input
                 .form-group
-                    label.col-md-4.control-label(for='textinput') API KEY
+                    label.col-md-4.control-label(for='keyinput') API KEY
                     .col-md-4
-                        input#textinput.form-control.input-md(name='textinput', type='text', placeholder='placeholder', maxlength='40', minlength='40', required='')
+                        input#textinput.form-control.input-md(name='keyinput', type='text', placeholder='Enter Your API Key', maxlength='40', minlength='40',value=keydef, required='')
                 // Button
                 .form-group
-                    label.col-md-4.control-label(for='singlebutton')
+                    label.col-md-4.control-label(for='button')
                     .col-md-4
-                        button#singlebutton.btn.btn-primary(name='singlebutton') Validate
+                        button#singlebutton.btn.btn-primary(name='button') Validate
     include footer.jade
-
-                       
