@@ -1,6 +1,10 @@
 doctype html
 html
-    include header.jade
+    head
+    title Alchemy API Demo
+    link(rel='stylesheet',href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet',href='/stylesheets/bootstrap-theme.min.css')
+    link(rel='stylesheet',href='/stylesheets/style.css')
     body
         h1=status
         form.form-horizontal(method='POST', action='/keycheck')
@@ -17,4 +21,6 @@ html
                     label.col-md-4.control-label(for='button')
                     .col-md-4
                         button#singlebutton.btn.btn-primary(name='button') Validate
-    include footer.jade
+
+    script(src='/javascripts/jquery-1.11.3.min.js')
+    script(src='/javascripts/bootstrap.min.js')

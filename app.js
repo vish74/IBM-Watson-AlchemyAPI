@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 function restrict(req, res, next) {
-    if (req.cookies.name) {
+    if (req.cookies.alcname) {
         next();
     } else {
         res.redirect('/');
