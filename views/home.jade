@@ -8,20 +8,54 @@ html
     body
         .container-fluid
             .row
-                .col-md-12
-                    nav.navbar.navbar-default.navbar-inverse(role='navigation')
-                        #bs-example-navbar-collapse-1.collapse.navbar-collapse
-                            ul.nav.navbar-nav
-                                li.active
-                                    a(href='#') Link
-                                li.active
-                                    a(href='#') Link
-                                li.active
-                                    a(href='#') Link
-                                li.active
-                                    a(href='#') Link
-                                li
-                                    a(href='#') Link
+                .col-sm-3
+                    .sidebar-nav
+                        .navbar.navbar-default(role='navigation')
+                            .navbar-header
+                                button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-navbar-collapse')
+                                    span.sr-only Toggle navigation
+                                    span.icon-bar
+                                    span.icon-bar
+                                    span.icon-bar
+                                span.visible-xs.navbar-brand Main Menu
+                            .navbar-collapse.collapse.sidebar-navbar-collapse
+                                ul.nav.navbar-nav
+                                    li.active
+                                        a(href='/home') Entity Extraction
+                                    li
+                                        a(href='') Keyword Extraction
+                                    li
+                                        a(href='#') Concept Tagging
+                                    li
+                                        a(href='#') Sentiment Analysis
+                                    li
+                                        a(href='#') Text Extraction
+                                    li
+                                        a(href='#') Author Extraction
+                                    li
+                                        a(href='#') Language Detection
+                                    li
+                                        a(href='#') Title Extraction
+                                    li
+                                        a(href='#') Relation Extraction
+                                    li
+                                        a(href='#') Text Categorization
+                                    li
+                                        a(href='#') Feed Detection
+                                    li
+                                        a(href='#') Microformats Parsing
+                                    li
+                                        a(href='#') Taxonomy Parsing
+                                    li
+                                        a(href='#') Image Parsing
+                                    li
+                                        a(href='#') Image Keywords Tagging
+                                    li
+                                        a(href='#') Combined Parsing
+                                    li
+                                        a(href='#') Face Recognition
+                .col-sm-9
+                    | Main content goes here
 
     script(src='/javascripts/jquery-1.11.3.min.js')
     script(src='/javascripts/bootstrap.min.js')

@@ -21,9 +21,8 @@ exports.user = function (req, res,next) {
             var stat = response['status'];
             if (stat === "OK") {
                 res.cookie('alcname', apikey, {maxAge: 900000, httpOnly: true});
-                //res.render('index',{status: 'CORRECT'});
                 res.redirect('home');
-
+                next();
             }
             else {
                 res.clearCookie('alcname', { path: '/' });
@@ -34,4 +33,8 @@ exports.user = function (req, res,next) {
     } else {
         res.redirect('/');
     }
+};
+
+exports.home = function (req, res,next) {
+    res.render('home');
 };

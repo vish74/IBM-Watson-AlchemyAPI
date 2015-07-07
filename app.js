@@ -29,6 +29,8 @@ function restrict(req, res, next) {
 
 app.get('/', routes.index);
 app.post('/keycheck', routes.user);
+app.get('/home',restrict,routes.home);
+
 
 
 // catch 404 and forward to error handler

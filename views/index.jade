@@ -6,21 +6,24 @@ html
     link(rel='stylesheet',href='/stylesheets/bootstrap-theme.min.css')
     link(rel='stylesheet',href='/stylesheets/style.css')
     body
-        h1=status
-        form.form-horizontal(method='POST', action='/keycheck')
-            fieldset
-                // Form Name
-                legend
-                // Text input
-                .form-group
-                    label.col-md-4.control-label(for='keyinput') API KEY
-                    .col-md-4
-                        input#textinput.form-control.input-md(name='keyinput', type='text', placeholder='Enter Your API Key', maxlength='40', minlength='40',value=keydef, required='')
-                // Button
-                .form-group
-                    label.col-md-4.control-label(for='button')
-                    .col-md-4
-                        button#singlebutton.btn.btn-primary(name='button') Validate
+        .container-fluid
+            .row
+                .col-md-10.col-md-offset-1
+                    h1=status
+                    form.form-horizontal(method='POST', action='/keycheck')
+                        fieldset
+                            // Form Name
+                            legend
+                            // Text input
+                            .form-group
+                                label.col-md-4.control-label(for='keyinput') API KEY
+                                .col-md-4
+                                    input#textinput.form-control.input-md(name='keyinput', type='text', placeholder='Enter Your API Key', maxlength='40', minlength='40',value=keydef, required='')
+                            // Button
+                            .form-group
+                                label.col-md-4.control-label(for='button')
+                                .col-md-4
+                                    button#singlebutton.btn.btn-primary(name='button') Validate
 
     script(src='/javascripts/jquery-1.11.3.min.js')
     script(src='/javascripts/bootstrap.min.js')
