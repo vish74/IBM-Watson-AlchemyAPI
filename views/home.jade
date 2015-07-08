@@ -5,6 +5,9 @@ html
     link(rel='stylesheet',href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet',href='/stylesheets/bootstrap-theme.min.css')
     link(rel='stylesheet',href='/stylesheets/style.css')
+    | $(function() {
+    |     $( "#tabs" ).tabs();
+    |   });
     body
         .container-fluid
             .row
@@ -20,8 +23,8 @@ html
                                 span.visible-xs.navbar-brand Main Menu
                             .navbar-collapse.collapse.sidebar-navbar-collapse
                                 ul.nav.navbar-nav
-                                    li.active
-                                        a(href='/home') Entity Extraction
+                                    li
+                                        a(href='/entity') Entity Extraction
                                     li
                                         a(href='') Keyword Extraction
                                     li
@@ -55,7 +58,16 @@ html
                                     li
                                         a(href='#') Face Recognition
                 .col-sm-9
-                    | Main content goes here
+                    form(role='form', method='POST', action=linklocation)
+                        .form-group
+                            label(for='inputtext')
+                                h2 #{api} || Enter Text Below
+                            textarea#inputtext.form-control(type='text' rows=8 name='inputtext') #{data_text}
+                        button.btn.btn-default.btn-success(type='submit') Submit
+                    hr
+                    h2 JSON Response
+                    textarea.form-control(type='text' rows=11 ) #{response}
+                    //.well #{response}
 
     script(src='/javascripts/jquery-1.11.3.min.js')
     script(src='/javascripts/bootstrap.min.js')

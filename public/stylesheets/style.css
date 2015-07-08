@@ -3,6 +3,9 @@ body {
     color:#fbfff9;
 }
 @media (min-width: 768px) {
+    .sidebar-nav{
+        margin-top:8px;
+    }
     .sidebar-nav .navbar .navbar-collapse {
         padding: 0;
         max-height: none;
@@ -21,4 +24,10 @@ body {
         padding-top: 8px;
         padding-bottom: 8px;
     }
+}
+.well{
+    height:200px;
+    max-height: 200px;
+    overflow-y:scroll;
+    color:#101010;
 }

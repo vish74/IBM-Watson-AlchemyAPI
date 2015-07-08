@@ -27,9 +27,16 @@ function restrict(req, res, next) {
     }
 }
 
+//Basic Routing
 app.get('/', routes.index);
 app.post('/keycheck', routes.user);
 app.get('/home',restrict,routes.home);
+
+//Pages Routing
+app.get('/entity',restrict,routes.entity);
+
+//API call Routing
+app.post('/entity_call',restrict,routes.entity_call);
 
 
 
