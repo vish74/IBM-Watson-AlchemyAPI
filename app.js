@@ -34,9 +34,42 @@ app.get('/home',restrict,routes.home);
 
 //Pages Routing
 app.get('/entity',restrict,routes.entity);
+app.get('/keyword',restrict,routes.keyword);
+app.get('/concept',restrict,routes.concept);
+app.get('/sentiment',restrict,routes.sentiment);
+app.get('/textext',restrict,routes.textext);
+app.get('/author',restrict,routes.author);
+app.get('/language',restrict,routes.language);
+app.get('/title',restrict,routes.title);
+app.get('/relation',restrict,routes.relation);
+app.get('/textcat',restrict,routes.textcat);
+app.get('/feed',restrict,routes.feed);
+app.get('/microformats',restrict,routes.microformats);
+app.get('/taxonomy',restrict,routes.taxonomy);
+//app.get('/image',restrict,routes.image);
+//app.get('/imagekey',restrict,routes.imagekey);
+app.get('/combined',restrict,routes.combined);
+//app.get('/face',restrict,routes.face);
+
 
 //API call Routing
 app.post('/entity_call',restrict,routes.entity_call);
+app.post('/keyword_call',restrict,routes.keyword_call);
+app.post('/concept_call',restrict,routes.concept_call);
+app.post('/sentiment_call',restrict,routes.sentiment_call);
+app.post('/textext_call',restrict,routes.textext_call);
+app.post('/author_call',restrict,routes.author_call);
+app.post('/language_call',restrict,routes.language_call);
+app.post('/title_call',restrict,routes.title_call);
+app.post('/relation_call',restrict,routes.relation_call);
+app.post('/textcat_call',restrict,routes.textcat_call);
+app.post('/feed_call',restrict,routes.feed_call);
+app.post('/microformats_call',restrict,routes.microformats_call);
+app.post('/taxonomy_call',restrict,routes.taxonomy_call);
+//app.post('/image_call',restrict,routes.image_call);
+//app.post('/imagekey_call',restrict,routes.imagekey_call);
+app.post('/combined_call',restrict,routes.combined_call);
+//app.post('/face_call',restrict,routes.face_call);
 
 
 
