@@ -29,6 +29,10 @@ function restrict(req, res, next) {
 
 //Basic Routing
 app.get('/', routes.index);
+app.get('/index', routes.index);
+app.get('/keycheck', function (req,res) {
+    res.redirect('/');
+});
 app.post('/keycheck', routes.user);
 app.get('/home',restrict,routes.home);
 
