@@ -1,9 +1,13 @@
 var AlchemyAPI = require('../alchemyapi');
 var alchemyapi = new AlchemyAPI();
+var fs = require('fs');
+
 
 var init_text = 'Yesterday dumb Bob destroyed my fancy iPhone in beautiful Denver, Colorado. I guess I will have to head over to the Apple Store and buy a new one.';
 var init_url = 'http://www.npr.org/2013/11/26/247336038/dont-stuff-the-turkey-and-other-tips-from-americas-test-kitchen';
 var init_html = '<html><head><title>Node.js Demo | AlchemyAPI</title></head><body><h1>Did you know that AlchemyAPI works on HTML?</h1><p>Well, you do now.</p></body></html>';
+var url_face_image = 'http://demo1.alchemyapi.com/images/vision/mother-daughter.jpg';
+
 
 //Index Redirection
 exports.index = function (req, res) {
@@ -91,13 +95,13 @@ exports.image = function (req, res,next) {
     res.render('home',{data_text:init_url, linklocation:'/image_call',api:'Image Parsing',textarea_input:'URL'});
 };
 exports.imagekey = function (req, res,next) {
-    res.render('home',{data_text:init_text, linklocation:'/imagekey_call',api:'Image Keywords Tagging',textarea_input:'text'});
+    res.render('imageup',{data_text:init_url, linklocation1:'/imagekey_call', linklocation2:'/imagekeyup_call' ,api:'Image Keywords Tagging',textarea_input:'URL'});
 };
 exports.combined = function (req, res,next) {
     res.render('home',{data_text:init_url, linklocation:'/combined_call',api:'Combined Parsing',textarea_input:'URL'});
 };
 exports.face = function (req, res,next) {
-    res.render('home',{data_text:init_text, linklocation:'/face_call',api:'Face Recognition',textarea_input:'text'});
+    res.render('imageup',{data_text:url_face_image, linklocation1:'/face_call', linklocation2:'/faceup_call',api:'Face Recognition',textarea_input:'URL'});
 };
 
 
@@ -284,16 +288,15 @@ exports.combined_call = function (req, res,next) {
     }
 };
 
-
 exports.image_call = function (req, res,next) {
     var apikey = req.cookies.alcname;
     alchemyapi.apikey = apikey;
-    var demo_text = req.body.inputtext;
+    var demo_url = req.body.inputtext;
 
-    entities(req, res);
-    function entities(req, res) {
-        alchemyapi.entities('text', demo_text,{ 'sentiment':1 }, function(response) {
-            res.render('home',{api:'Entity Extraction',data_text:demo_text, response:JSON.stringify(response,null,4)});
+    imageparse(req, res);
+    function imageparse(req, res) {
+        alchemyapi.image('url', demo_url, {}, function(response) {
+            res.render('home',{api:'Image Parsing',data_text:demo_url, response:JSON.stringify(response,null,4)});
         });
     }
 };
@@ -301,12 +304,25 @@ exports.image_call = function (req, res,next) {
 exports.imagekey_call = function (req, res,next) {
     var apikey = req.cookies.alcname;
     alchemyapi.apikey = apikey;
-    var demo_text = req.body.inputtext;
+    var demo_url = req.body.inputtext;
 
-    entities(req, res);
-    function entities(req, res) {
-        alchemyapi.entities('text', demo_text,{ 'sentiment':1 }, function(response) {
-            res.render('home',{api:'Entity Extraction',data_text:demo_text, response:JSON.stringify(response,null,4)});
+    imagekey(req, res);
+    function imagekey(req, res) {
+        alchemyapi.image_keywords('url', demo_url, {}, function(response) {
+            res.render('imageup',{api:'Image Keywords Tagging',data_text:demo_url, response:JSON.stringify(response,null,4)});
+        });
+    }
+};
+
+exports.imagekeyup_call = function (req, res,next) {
+    var apikey = req.cookies.alcname;
+    alchemyapi.apikey = apikey;
+    var demo_url = req.body.inputfile;
+
+    imagekeyup(req, res);
+    function imagekeyup(req, res) {
+        alchemyapi.image_face_tag('image', post_face_image, {}, function(response) {
+            res.render('imageup',{api:'Image Keywords Tagging',data_text:demo_url, response:JSON.stringify(response,null,4)});
         });
     }
 };
@@ -316,10 +332,23 @@ exports.face_call = function (req, res,next) {
     alchemyapi.apikey = apikey;
     var demo_text = req.body.inputtext;
 
-    entities(req, res);
-    function entities(req, res) {
-        alchemyapi.entities('text', demo_text,{ 'sentiment':1 }, function(response) {
-            res.render('home',{api:'Entity Extraction',data_text:demo_text, response:JSON.stringify(response,null,4)});
+    face(req, res);
+    function face(req, res) {
+        alchemyapi.image_face_tag('url', url_face_image, {}, function(response) {
+            res.render('imageup',{api:'Face Recognition',data_text:demo_text, response:JSON.stringify(response,null,4)});
+        });
+    }
+};
+
+exports.faceup_call = function (req, res,next) {
+    var apikey = req.cookies.alcname;
+    alchemyapi.apikey = apikey;
+    var demo_text = req.body.inputfile;
+
+    faceup(req, res);
+    function faceup(req, res) {
+        alchemyapi.image_face_tag('image', post_face_image, {}, function(response) {
+            res.render('imageup',{api:'Face Recognition',data_text:demo_text, response:JSON.stringify(response,null,4)});
         });
     }
 };

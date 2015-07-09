@@ -55,16 +55,24 @@ html
                                     li
                                         a(href='/face') Face Recognition
                 .col-sm-9
-                    form(role='form', method='POST', action=linklocation)
-                        .form-group
-                            label(for='inputtext')
-                                h2 #{api} || Enter #{textarea_input} Below
-                            textarea#inputtext.form-control(type='text' rows=8 name='inputtext') #{data_text}
-                        button.btn.btn-default.btn-success(type='submit') Submit
+                    .row
+                        h2 #{api} || Enter URL or Upload Below
+                        .col-md-6
+                            form(role='form', method='POST', action=linklocation1)
+                                .form-group
+                                    label(for='inputtext')
+                                    textarea#inputtext.form-control(type='text' rows=2 name='inputtext') #{data_text}
+                                button.btn.btn-default.btn-success(type='submit') Submit
+                        .col-md-6
+                            form(role='form', method='POST', action=linklocation2)
+                                    .form-group
+                                        label(for='inputfile')
+                                        input#inputfile(type='file')
+                                    button.btn.btn-default.btn-success(type='submit') Submit
+                    hr
                     hr
                     h2 JSON Response
-                    textarea.form-control(type='text' rows=11 ) #{response}
-
+                        textarea.form-control(type='text' rows=11 ) #{response}
     script(src='/javascripts/jquery-1.11.3.min.js')
     script(src='/javascripts/bootstrap.min.js')
     script(src='/javascripts/ga.js')

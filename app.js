@@ -50,10 +50,10 @@ app.get('/textcat',restrict,routes.textcat);
 app.get('/feed',restrict,routes.feed);
 app.get('/microformats',restrict,routes.microformats);
 app.get('/taxonomy',restrict,routes.taxonomy);
-//app.get('/image',restrict,routes.image);
-//app.get('/imagekey',restrict,routes.imagekey);
+app.get('/image',restrict,routes.image);
+app.get('/imagekey',restrict,routes.imagekey);
 app.get('/combined',restrict,routes.combined);
-//app.get('/face',restrict,routes.face);
+app.get('/face',restrict,routes.face);
 
 
 //API call Routing
@@ -70,10 +70,11 @@ app.post('/textcat_call',restrict,routes.textcat_call);
 app.post('/feed_call',restrict,routes.feed_call);
 app.post('/microformats_call',restrict,routes.microformats_call);
 app.post('/taxonomy_call',restrict,routes.taxonomy_call);
-//app.post('/image_call',restrict,routes.image_call);
-//app.post('/imagekey_call',restrict,routes.imagekey_call);
+app.post('/image_call',restrict,routes.image_call);
+app.post('/imagekey_call',restrict,routes.imagekey_call);
+app.post('/imagekeyup_call',restrict,routes.imagekeyup_call);
 app.post('/combined_call',restrict,routes.combined_call);
-//app.post('/face_call',restrict,routes.face_call);
+app.post('/face_call',restrict,routes.face_call);
 
 
 
