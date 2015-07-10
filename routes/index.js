@@ -1,7 +1,5 @@
 var AlchemyAPI = require('../alchemyapi');
 var alchemyapi = new AlchemyAPI();
-var fs = require('fs');
-
 
 var init_text = 'Yesterday dumb Bob destroyed my fancy iPhone in beautiful Denver, Colorado. I guess I will have to head over to the Apple Store and buy a new one.';
 var init_url = 'http://www.npr.org/2013/11/26/247336038/dont-stuff-the-turkey-and-other-tips-from-americas-test-kitchen';
@@ -95,13 +93,13 @@ exports.image = function (req, res,next) {
     res.render('home',{data_text:init_url, linklocation:'/image_call',api:'Image Parsing',textarea_input:'URL'});
 };
 exports.imagekey = function (req, res,next) {
-    res.render('imageup',{data_text:init_url, linklocation1:'/imagekey_call', linklocation2:'/imagekeyup_call' ,api:'Image Keywords Tagging',textarea_input:'URL'});
+    res.render('home',{data_text:init_url, linklocation:'/imagekey_call' ,api:'Image Keywords Tagging',textarea_input:'URL'});
 };
 exports.combined = function (req, res,next) {
     res.render('home',{data_text:init_url, linklocation:'/combined_call',api:'Combined Parsing',textarea_input:'URL'});
 };
 exports.face = function (req, res,next) {
-    res.render('imageup',{data_text:url_face_image, linklocation1:'/face_call', linklocation2:'/faceup_call',api:'Face Recognition',textarea_input:'URL'});
+    res.render('home',{data_text:url_face_image, linklocation:'/face_call',api:'Face Recognition',textarea_input:'URL'});
 };
 
 
@@ -296,7 +294,7 @@ exports.image_call = function (req, res,next) {
     imageparse(req, res);
     function imageparse(req, res) {
         alchemyapi.image('url', demo_url, {}, function(response) {
-            res.render('home',{api:'Image Parsing',data_text:demo_url, response:JSON.stringify(response,null,4)});
+            res.render('home',{api:'Image Parsing',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL'});
         });
     }
 };
@@ -305,24 +303,10 @@ exports.imagekey_call = function (req, res,next) {
     var apikey = req.cookies.alcname;
     alchemyapi.apikey = apikey;
     var demo_url = req.body.inputtext;
-
     imagekey(req, res);
     function imagekey(req, res) {
         alchemyapi.image_keywords('url', demo_url, {}, function(response) {
-            res.render('imageup',{api:'Image Keywords Tagging',data_text:demo_url, response:JSON.stringify(response,null,4)});
-        });
-    }
-};
-
-exports.imagekeyup_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
-    alchemyapi.apikey = apikey;
-    var demo_url = req.body.inputfile;
-
-    imagekeyup(req, res);
-    function imagekeyup(req, res) {
-        alchemyapi.image_face_tag('image', post_face_image, {}, function(response) {
-            res.render('imageup',{api:'Image Keywords Tagging',data_text:demo_url, response:JSON.stringify(response,null,4)});
+            res.render('home',{api:'Image Keywords Tagging',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL'});
         });
     }
 };
@@ -330,25 +314,12 @@ exports.imagekeyup_call = function (req, res,next) {
 exports.face_call = function (req, res,next) {
     var apikey = req.cookies.alcname;
     alchemyapi.apikey = apikey;
-    var demo_text = req.body.inputtext;
+    var demo_url = req.body.inputtext;
 
     face(req, res);
     function face(req, res) {
-        alchemyapi.image_face_tag('url', url_face_image, {}, function(response) {
-            res.render('imageup',{api:'Face Recognition',data_text:demo_text, response:JSON.stringify(response,null,4)});
-        });
-    }
-};
-
-exports.faceup_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
-    alchemyapi.apikey = apikey;
-    var demo_text = req.body.inputfile;
-
-    faceup(req, res);
-    function faceup(req, res) {
-        alchemyapi.image_face_tag('image', post_face_image, {}, function(response) {
-            res.render('imageup',{api:'Face Recognition',data_text:demo_text, response:JSON.stringify(response,null,4)});
+        alchemyapi.image_face_tag('url', demo_url, {}, function(response) {
+            res.render('home',{api:'Face Recognition',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL'});
         });
     }
 };

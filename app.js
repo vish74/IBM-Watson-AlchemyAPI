@@ -72,7 +72,6 @@ app.post('/microformats_call',restrict,routes.microformats_call);
 app.post('/taxonomy_call',restrict,routes.taxonomy_call);
 app.post('/image_call',restrict,routes.image_call);
 app.post('/imagekey_call',restrict,routes.imagekey_call);
-app.post('/imagekeyup_call',restrict,routes.imagekeyup_call);
 app.post('/combined_call',restrict,routes.combined_call);
 app.post('/face_call',restrict,routes.face_call);
 
