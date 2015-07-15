@@ -1,6 +1,6 @@
 applications:
 - disk_quota: 1024M
-  name: AlchemyAPI
+  name: IBM-Watson-AlchemyAPI
   command: node app.js
   path: .
   instances: 1

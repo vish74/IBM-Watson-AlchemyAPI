@@ -23,6 +23,8 @@ var app = express();
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
 
+var variables = JSON.parse(process.env['user-provided'] || {});
+console.log(variables);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
