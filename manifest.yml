@@ -1,5 +1,6 @@
 applications:
-- name: alchemy-api
-  command: node app.js
+- disk_quota: 1024M
+  name: AlchemyAPI
   path: .
+  instances: 1
   memory: 512M

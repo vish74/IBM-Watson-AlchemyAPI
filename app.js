@@ -1,4 +1,16 @@
+/*jshint node:true*/
+
+//------------------------------------------------------------------------------
+// Alchemy API node.js starter application for Bluemix
+//------------------------------------------------------------------------------
+
+// This application uses express as it's web server
+// for more info, see: http://expressjs.com
 var express = require('express');
+
+// cfenv provides access to your Cloud Foundry environment
+// for more info, see: https://www.npmjs.com/package/cfenv
+var cfenv = require('cfenv');
 var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -7,6 +19,9 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/');
 
 var app = express();
+
+// get the app environment from Cloud Foundry
+var appEnv = cfenv.getAppEnv();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -106,14 +121,11 @@ app.use(function (err, req, res, next) {
 });
 
 
-var server = app.listen(process.env.VCAP_APP_PORT || 3000, function () {
+// start server on the specified port and binding host
+app.listen(appEnv.port, appEnv.bind, function() {
 
-    var host = server.address().address;
-    var port = server.address().port;
-
-    console.log('IBM app Running at http://%s:%s', host, port);
-    console.log('To view the example, point your favorite browser to: localhost:3000');
-
+    // print a message when the server starts listening
+    console.log("server starting on " + appEnv.url);
 });
 
 module.exports = app;
