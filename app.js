@@ -23,8 +23,6 @@ var app = express();
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
 
-var variables = JSON.parse(process.env['user-provided'] || {});
-console.log(variables);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -39,7 +37,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 function restrict(req, res, next) {
     if (req.cookies.alcname) {
         next();
-    } else {
+    }
+    else {
         res.redirect('/');
     }
 }
@@ -91,7 +90,6 @@ app.post('/image_call',restrict,routes.image_call);
 app.post('/imagekey_call',restrict,routes.imagekey_call);
 app.post('/combined_call',restrict,routes.combined_call);
 app.post('/face_call',restrict,routes.face_call);
-
 
 
 // catch 404 and forward to error handler

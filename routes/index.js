@@ -10,6 +10,15 @@ var url_face_image = 'http://demo1.alchemyapi.com/images/vision/mother-daughter.
 //Index Redirection
 exports.index = function (req, res) {
     var apikey = req.cookies.alcname;
+
+    if (process.env.VCAP_SERVICES) {
+        var services = JSON.parse(process.env.VCAP_SERVICES);
+        for (var service_name in services) {
+            var service = services[service_name][0];
+            var sdkey = service.credentials.apikey;
+            res.render('index', {keydef: sdkey});
+        }
+    }
     if (apikey) {
         res.render('index', {keydef: apikey});
     }
