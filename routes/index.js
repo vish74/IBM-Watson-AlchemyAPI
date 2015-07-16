@@ -23,7 +23,6 @@ exports.index = function (req, res) {
                 if (stat === "OK") {
                     req.session.finalkey = sdkey ;
                     res.redirect('home');
-                    next();
                 }
                 else {
                     res.render('index',{status: 'WRONG API KEY/ TRY AGAIN'});
