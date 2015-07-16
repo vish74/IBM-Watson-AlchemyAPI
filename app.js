@@ -15,6 +15,7 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var routes = require('./routes/');
 
@@ -32,10 +33,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(session({ name:'Alchemy', secret: 'abcd', resave: false, saveUninitialized: true }));
 
 function restrict(req, res, next) {
-    if (req.cookies.alcname) {
+    if (req.session.finalkey) {
         next();
     }
     else {

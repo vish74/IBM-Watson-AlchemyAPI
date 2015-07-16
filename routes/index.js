@@ -9,17 +9,28 @@ var url_face_image = 'http://demo1.alchemyapi.com/images/vision/mother-daughter.
 
 //Index Redirection
 exports.index = function (req, res) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
 
     if (process.env.VCAP_SERVICES) {
         var services = JSON.parse(process.env.VCAP_SERVICES);
         for (var service_name in services) {
             var service = services[service_name][0];
             var sdkey = service.credentials.apikey;
-            res.render('index', {keydef: sdkey});
+            alchemyapi.apikey = sdkey;
+            var test_text = 'Bob broke my heart, and then made up this silly sentence to test the Node.js SDK';
+            alchemyapi.entities('text', test_text, null, function (response) {
+                var stat = response['status'];
+                if (stat === "OK") {
+                    req.session.finalkey = sdkey ;
+                    res.redirect('home');
+                    next();
+                }
+                else {
+                    res.render('index',{status: 'WRONG API KEY/ TRY AGAIN'});
+                }});
         }
     }
-    if (apikey) {
+    else if (apikey) {
         res.render('index', {keydef: apikey});
     }
     else {
@@ -37,12 +48,11 @@ exports.user = function (req, res,next) {
         alchemyapi.entities('text', test_text, null, function (response) {
             var stat = response['status'];
             if (stat === "OK") {
-                res.cookie('alcname', apikey, {maxAge: 900000, httpOnly: true});
+                req.session.finalkey = apikey ;
                 res.redirect('home');
                 next();
             }
             else {
-                res.clearCookie('alcname', { path: '/' });
                 res.render('index',{status: 'WRONG API KEY/ TRY AGAIN'});
             }
         });
@@ -114,7 +124,7 @@ exports.face = function (req, res,next) {
 
 //API CALLS
 exports.entity_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_text = req.body.inputtext;
 
@@ -127,7 +137,7 @@ exports.entity_call = function (req, res,next) {
 };
 
 exports.keyword_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_text = req.body.inputtext;
 
@@ -140,7 +150,7 @@ exports.keyword_call = function (req, res,next) {
 };
 
 exports.concept_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_text = req.body.inputtext;
 
@@ -153,7 +163,7 @@ exports.concept_call = function (req, res,next) {
 };
 
 exports.sentiment_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_html = req.body.inputtext;
 
@@ -166,7 +176,7 @@ exports.sentiment_call = function (req, res,next) {
 };
 
 exports.textext_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_url = req.body.inputtext;
 
@@ -179,7 +189,7 @@ exports.textext_call = function (req, res,next) {
 };
 
 exports.author_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_url = req.body.inputtext;
 
@@ -192,7 +202,7 @@ exports.author_call = function (req, res,next) {
 };
 
 exports.language_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_text = req.body.inputtext;
 
@@ -205,7 +215,7 @@ exports.language_call = function (req, res,next) {
 };
 
 exports.title_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_url = req.body.inputtext;
 
@@ -218,7 +228,7 @@ exports.title_call = function (req, res,next) {
 };
 
 exports.relation_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_text = req.body.inputtext;
 
@@ -231,7 +241,7 @@ exports.relation_call = function (req, res,next) {
 };
 
 exports.textcat_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_text = req.body.inputtext;
 
@@ -244,7 +254,7 @@ exports.textcat_call = function (req, res,next) {
 };
 
 exports.feed_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_url = req.body.inputtext;
 
@@ -257,7 +267,7 @@ exports.feed_call = function (req, res,next) {
 };
 
 exports.microformats_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_url = req.body.inputtext;
 
@@ -270,7 +280,7 @@ exports.microformats_call = function (req, res,next) {
 };
 
 exports.taxonomy_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_url = req.body.inputtext;
 
@@ -283,7 +293,7 @@ exports.taxonomy_call = function (req, res,next) {
 };
 
 exports.combined_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_url = req.body.inputtext;
 
@@ -296,7 +306,7 @@ exports.combined_call = function (req, res,next) {
 };
 
 exports.image_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_url = req.body.inputtext;
 
@@ -309,7 +319,7 @@ exports.image_call = function (req, res,next) {
 };
 
 exports.imagekey_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_url = req.body.inputtext;
     imagekey(req, res);
@@ -321,7 +331,7 @@ exports.imagekey_call = function (req, res,next) {
 };
 
 exports.face_call = function (req, res,next) {
-    var apikey = req.cookies.alcname;
+    var apikey = req.session.finalkey;
     alchemyapi.apikey = apikey;
     var demo_url = req.body.inputtext;
 
