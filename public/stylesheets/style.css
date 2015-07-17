@@ -16,6 +16,10 @@ body {
     margin-bottom: 20px;
     padding:10px 5px 10px 5px;
 }
+.jumbotron p
+{
+ font-size: 15px;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
 
