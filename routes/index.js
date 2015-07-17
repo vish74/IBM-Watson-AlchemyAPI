@@ -5,7 +5,7 @@ var init_text = 'Yesterday dumb Bob destroyed my fancy iPhone in beautiful Denve
 var init_url = 'http://www.npr.org/2013/11/26/247336038/dont-stuff-the-turkey-and-other-tips-from-americas-test-kitchen';
 var init_html = '<html><head><title>Node.js Demo | AlchemyAPI</title></head><body><h1>Did you know that AlchemyAPI works on HTML?</h1><p>Well, you do now.</p></body></html>';
 var url_face_image = 'http://demo1.alchemyapi.com/images/vision/mother-daughter.jpg';
-
+var entity = 'Entity Extraction API identifies people, companies, organizations, cities, geographic features, and other typed entities within your HTML, text, or web-based content.';
 
 //Index Redirection
 exports.index = function (req, res) {
@@ -63,61 +63,61 @@ exports.user = function (req, res,next) {
 
 //Home Page Redirection
 exports.home = function (req, res,next) {
-    res.render('home',{data_text:init_text, linklocation:'/entity_call',api:'Entity Extraction',textarea_input:'text'});
+    res.render('home',{data_text:init_text, linklocation:'/entity_call',api:'Entity Extraction',textarea_input:'text',desc:entity});
 };
 
 
 //All other pages redirection
 exports.entity = function (req, res,next) {
-  res.render('home',{data_text:init_text, linklocation:'/entity_call',api:'Entity Extraction',textarea_input:'text'});
+  res.render('home',{data_text:init_text, linklocation:'/entity_call',api:'Entity Extraction',textarea_input:'text',desc:entity, desc_scroll: 1});
 };
 exports.keyword = function (req, res,next) {
-    res.render('home',{data_text:init_text, linklocation:'/keyword_call',api:'Keyword Extraction',textarea_input:'text'});
+    res.render('home',{data_text:init_text, linklocation:'/keyword_call',api:'Keyword Extraction',textarea_input:'text', desc_scroll: 1});
 };
 exports.concept = function (req, res,next) {
-    res.render('home',{data_text:init_text, linklocation:'/concept_call',api:'Concept Tagging',textarea_input:'text'});
+    res.render('home',{data_text:init_text, linklocation:'/concept_call',api:'Concept Tagging',textarea_input:'text', desc_scroll: 1});
 };
 exports.sentiment = function (req, res,next) {
-    res.render('home',{data_text:init_html, linklocation:'/sentiment_call',api:'Sentiment Analysis',textarea_input:'HTML'});
+    res.render('home',{data_text:init_html, linklocation:'/sentiment_call',api:'Sentiment Analysis',textarea_input:'HTML', desc_scroll: 1});
 };
 exports.textext = function (req, res,next) {
-    res.render('home',{data_text:init_url, linklocation:'/textext_call',api:'Text Extraction',textarea_input:'URL'});
+    res.render('home',{data_text:init_url, linklocation:'/textext_call',api:'Text Extraction',textarea_input:'URL', desc_scroll: 1});
 };
 exports.author = function (req, res,next) {
-    res.render('home',{data_text:init_url, linklocation:'/author_call',api:'Author Extraction',textarea_input:'URL'});
+    res.render('home',{data_text:init_url, linklocation:'/author_call',api:'Author Extraction',textarea_input:'URL', desc_scroll: 1});
 };
 exports.language = function (req, res,next) {
-    res.render('home',{data_text:init_text, linklocation:'/language_call',api:'Language Detection',textarea_input:'text'});
+    res.render('home',{data_text:init_text, linklocation:'/language_call',api:'Language Detection',textarea_input:'text', desc_scroll: 1});
 };
 exports.title = function (req, res,next) {
-    res.render('home',{data_text:init_url, linklocation:'/title_call',api:'Title Extraction',textarea_input:'URL'});
+    res.render('home',{data_text:init_url, linklocation:'/title_call',api:'Title Extraction',textarea_input:'URL', desc_scroll: 1});
 };
 exports.relation = function (req, res,next) {
-    res.render('home',{data_text:init_text, linklocation:'/relation_call',api:'Relation Extraction',textarea_input:'text'});
+    res.render('home',{data_text:init_text, linklocation:'/relation_call',api:'Relation Extraction',textarea_input:'text', desc_scroll: 1});
 };
 exports.textcat = function (req, res,next) {
-    res.render('home',{data_text:init_text, linklocation:'/textcat_call',api:'Text Categorization',textarea_input:'text'});
+    res.render('home',{data_text:init_text, linklocation:'/textcat_call',api:'Text Categorization',textarea_input:'text', desc_scroll: 1});
 };
 exports.feed = function (req, res,next) {
-    res.render('home',{data_text:init_url, linklocation:'/feed_call',api:'Feed Detection',textarea_input:'URL'});
+    res.render('home',{data_text:init_url, linklocation:'/feed_call',api:'Feed Detection',textarea_input:'URL', desc_scroll: 1});
 };
 exports.microformats = function (req, res,next) {
-    res.render('home',{data_text:init_url, linklocation:'/microformats_call',api:'Microformats Parsing',textarea_input:'URL'});
+    res.render('home',{data_text:init_url, linklocation:'/microformats_call',api:'Microformats Parsing',textarea_input:'URL', desc_scroll: 1});
 };
 exports.taxonomy = function (req, res,next) {
-    res.render('home',{data_text:init_url, linklocation:'/taxonomy_call',api:'Taxonomy Parsing',textarea_input:'URL'});
+    res.render('home',{data_text:init_url, linklocation:'/taxonomy_call',api:'Taxonomy Parsing',textarea_input:'URL', desc_scroll: 1});
 };
 exports.image = function (req, res,next) {
-    res.render('home',{data_text:init_url, linklocation:'/image_call',api:'Image Parsing',textarea_input:'URL'});
+    res.render('home',{data_text:init_url, linklocation:'/image_call',api:'Image Parsing',textarea_input:'URL', desc_scroll: 1});
 };
 exports.imagekey = function (req, res,next) {
-    res.render('home',{data_text:init_url, linklocation:'/imagekey_call' ,api:'Image Keywords Tagging',textarea_input:'URL'});
+    res.render('home',{data_text:init_url, linklocation:'/imagekey_call' ,api:'Image Keywords Tagging',textarea_input:'URL', desc_scroll: 1});
 };
 exports.combined = function (req, res,next) {
-    res.render('home',{data_text:init_url, linklocation:'/combined_call',api:'Combined Parsing',textarea_input:'URL'});
+    res.render('home',{data_text:init_url, linklocation:'/combined_call',api:'Combined Parsing',textarea_input:'URL', desc_scroll: 1});
 };
 exports.face = function (req, res,next) {
-    res.render('home',{data_text:url_face_image, linklocation:'/face_call',api:'Face Recognition',textarea_input:'URL'});
+    res.render('home',{data_text:url_face_image, linklocation:'/face_call',api:'Face Recognition',textarea_input:'URL', desc_scroll: 1});
 };
 
 
@@ -130,7 +130,7 @@ exports.entity_call = function (req, res,next) {
     entities(req, res);
     function entities(req, res) {
         alchemyapi.entities('text', demo_text,{ 'sentiment':1 }, function(response) {
-            res.render('home',{api:'Entity Extraction',data_text:demo_text, response:JSON.stringify(response,null,4),textarea_input:'text'});
+            res.render('home',{api:'Entity Extraction',data_text:demo_text, response:JSON.stringify(response,null,4),textarea_input:'text', desc_scroll: 2});
         });
     }
 };
@@ -143,7 +143,7 @@ exports.keyword_call = function (req, res,next) {
     keyword(req, res);
     function keyword(req, res) {
         alchemyapi.keywords('text', demo_text, { 'sentiment':1 }, function(response) {
-            res.render('home',{api:'Keyword Extraction',data_text:demo_text, response:JSON.stringify(response,null,4),textarea_input:'text'});
+            res.render('home',{api:'Keyword Extraction',data_text:demo_text, response:JSON.stringify(response,null,4),textarea_input:'text', desc_scroll: 2});
         });
     }
 };
@@ -156,7 +156,7 @@ exports.concept_call = function (req, res,next) {
     concepts(req, res);
     function concepts(req, res) {
         alchemyapi.concepts('text', demo_text, { 'showSourceText':1 }, function(response) {
-            res.render('home',{api:'Concept Tagging',data_text:demo_text, response:JSON.stringify(response,null,4),textarea_input:'text'});
+            res.render('home',{api:'Concept Tagging',data_text:demo_text, response:JSON.stringify(response,null,4),textarea_input:'text', desc_scroll: 2});
         });
     }
 };
@@ -169,7 +169,7 @@ exports.sentiment_call = function (req, res,next) {
     sentiment(req, res);
     function sentiment(req, res) {
         alchemyapi.sentiment('html', demo_html, {}, function(response) {
-            res.render('home',{api:'Sentiment Analysis',data_text:demo_html, response:JSON.stringify(response,null,4),textarea_input:'HTML'});
+            res.render('home',{api:'Sentiment Analysis',data_text:demo_html, response:JSON.stringify(response,null,4),textarea_input:'HTML', desc_scroll: 2});
         });
     }
 };
@@ -182,7 +182,7 @@ exports.textext_call = function (req, res,next) {
     textext(req, res);
     function textext(req, res) {
         alchemyapi.text('url', demo_url, {}, function(response) {
-            res.render('home',{api:'Text Extraction',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL'});
+            res.render('home',{api:'Text Extraction',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL', desc_scroll: 2});
         });
     }
 };
@@ -195,7 +195,7 @@ exports.author_call = function (req, res,next) {
     author(req, res);
     function author(req, res) {
         alchemyapi.author('url', demo_url, {}, function(response) {
-            res.render('home',{api:'Language Detection',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL'});
+            res.render('home',{api:'Language Detection',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL', desc_scroll: 2});
         });
     }
 };
@@ -208,7 +208,7 @@ exports.language_call = function (req, res,next) {
     language(req, res);
     function language(req, res) {
         alchemyapi.language('text', demo_text, {}, function(response) {
-            res.render('home',{api:'Language Detection',data_text:demo_text, response:JSON.stringify(response,null,4),textarea_input:'text'});
+            res.render('home',{api:'Language Detection',data_text:demo_text, response:JSON.stringify(response,null,4),textarea_input:'text', desc_scroll: 2});
         });
     }
 };
@@ -221,7 +221,7 @@ exports.title_call = function (req, res,next) {
     title(req, res);
     function title(req, res) {
         alchemyapi.title('url', demo_url, {}, function(response) {
-            res.render('home',{api:'Title Extraction',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL'});
+            res.render('home',{api:'Title Extraction',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL', desc_scroll: 2});
         });
     }
 };
@@ -234,7 +234,7 @@ exports.relation_call = function (req, res,next) {
     relation(req, res);
     function relation(req, res) {
         alchemyapi.relations('text', demo_text, {}, function(response) {
-            res.render('home',{api:'Relation Extraction',data_text:demo_text, response:JSON.stringify(response,null,4),textarea_input:'text'});
+            res.render('home',{api:'Relation Extraction',data_text:demo_text, response:JSON.stringify(response,null,4),textarea_input:'text', desc_scroll: 2});
         });
     }
 };
@@ -247,7 +247,7 @@ exports.textcat_call = function (req, res,next) {
     textcat(req, res);
     function textcat(req, res) {
         alchemyapi.category('text', demo_text, {}, function(response) {
-            res.render('home',{api:'Text Categorization',data_text:demo_text, response:JSON.stringify(response,null,4),textarea_input:'text'});
+            res.render('home',{api:'Text Categorization',data_text:demo_text, response:JSON.stringify(response,null,4),textarea_input:'text', desc_scroll: 2});
         });
     }
 };
@@ -260,7 +260,7 @@ exports.feed_call = function (req, res,next) {
     feed(req, res);
     function feed(req, res) {
         alchemyapi.feeds('url', demo_url, {}, function(response) {
-            res.render('home',{api:'Feed Detection',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL'});
+            res.render('home',{api:'Feed Detection',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL', desc_scroll: 2});
         });
     }
 };
@@ -273,7 +273,7 @@ exports.microformats_call = function (req, res,next) {
     microformats(req, res);
     function microformats(req, res) {
         alchemyapi.microformats('url', demo_url, {}, function(response) {
-            res.render('home',{api:'Microformats Parsing',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL'});
+            res.render('home',{api:'Microformats Parsing',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL', desc_scroll: 2});
         });
     }
 };
@@ -286,7 +286,7 @@ exports.taxonomy_call = function (req, res,next) {
     taxonomy(req, res);
     function taxonomy(req, res) {
         alchemyapi.taxonomy('url', demo_url, {}, function(response) {
-            res.render('home',{api:'Taxonomy Parsing',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL'});
+            res.render('home',{api:'Taxonomy Parsing',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL', desc_scroll: 2});
         });
     }
 };
@@ -299,7 +299,7 @@ exports.combined_call = function (req, res,next) {
     combined(req, res);
     function combined(req, res) {
         alchemyapi.combined('url', demo_url, {}, function(response) {
-            res.render('home',{api:'Combined Parsing',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL'});
+            res.render('home',{api:'Combined Parsing',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL', desc_scroll: 2});
         });
     }
 };
@@ -312,7 +312,7 @@ exports.image_call = function (req, res,next) {
     imageparse(req, res);
     function imageparse(req, res) {
         alchemyapi.image('url', demo_url, {}, function(response) {
-            res.render('home',{api:'Image Parsing',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL'});
+            res.render('home',{api:'Image Parsing',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL', desc_scroll: 2});
         });
     }
 };
@@ -324,7 +324,7 @@ exports.imagekey_call = function (req, res,next) {
     imagekey(req, res);
     function imagekey(req, res) {
         alchemyapi.image_keywords('url', demo_url, {}, function(response) {
-            res.render('home',{api:'Image Keywords Tagging',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL'});
+            res.render('home',{api:'Image Keywords Tagging',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL', desc_scroll: 2});
         });
     }
 };
@@ -337,7 +337,7 @@ exports.face_call = function (req, res,next) {
     face(req, res);
     function face(req, res) {
         alchemyapi.image_face_tag('url', demo_url, {}, function(response) {
-            res.render('home',{api:'Face Recognition',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL'});
+            res.render('home',{api:'Face Recognition',data_text:demo_url, response:JSON.stringify(response,null,4),textarea_input:'URL', desc_scroll: 2});
         });
     }
 };

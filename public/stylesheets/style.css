@@ -2,32 +2,25 @@ body {
     background: #c34a49;
     color:#fbfff9;
 }
-@media (min-width: 768px) {
-    .sidebar-nav{
-        margin-top:8px;
-    }
-    .sidebar-nav .navbar .navbar-collapse {
-        padding: 0;
-        max-height: none;
-    }
-    .sidebar-nav .navbar ul {
-        float: none;
-    }
-    .sidebar-nav .navbar ul:not {
-        display: block;
-    }
-    .sidebar-nav .navbar li {
-        float: none;
-        display: block;
-    }
-    .sidebar-nav .navbar li a {
-        padding-top: 8px;
-        padding-bottom: 8px;
-    }
-}
 .well{
     height:200px;
     max-height: 200px;
     overflow-y:scroll;
     color:#101010;
+}
+.jumbotron {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+    margin-top: 24px;
+    color:#101010;
+    margin-bottom: 20px;
+    padding:10px 5px 10px 5px;
+}
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
 }

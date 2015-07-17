@@ -8,62 +8,95 @@ html
     body
         .container-fluid
             .row
-                .col-sm-3
-                    .sidebar-nav
-                        .navbar.navbar-default(role='navigation')
-                            .navbar-header
-                                button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-navbar-collapse')
-                                    span.sr-only Toggle navigation
-                                    span.icon-bar
-                                    span.icon-bar
-                                    span.icon-bar
-                                span.visible-xs.navbar-brand Main Menu
-                            .navbar-collapse.collapse.sidebar-navbar-collapse
-                                ul.nav.navbar-nav
-                                    li
-                                        a(href='/entity') Entity Extraction
-                                    li
-                                        a(href='/keyword') Keyword Extraction
-                                    li
-                                        a(href='/concept') Concept Tagging
-                                    li
-                                        a(href='/sentiment') Sentiment Analysis
-                                    li
-                                        a(href='/textext') Text Extraction
-                                    li
-                                        a(href='/author') Author Extraction
-                                    li
-                                        a(href='/language') Language Detection
-                                    li
-                                        a(href='/title') Title Extraction
-                                    li
-                                        a(href='/relation') Relation Extraction
-                                    li
-                                        a(href='/textcat') Text Categorization
-                                    li
-                                        a(href='/feed') Feed Detection
-                                    li
-                                        a(href='/microformats') Microformats Parsing
-                                    li
-                                        a(href='/taxonomy') Taxonomy Parsing
-                                    li
-                                        a(href='/image') Image Parsing
-                                    li
-                                        a(href='/imagekey') Image Keywords Tagging
-                                    li
-                                        a(href='/combined') Combined Parsing
-                                    li
-                                        a(href='/face') Face Recognition
-                .col-sm-9
-                    form(role='form', method='POST', action=linklocation)
-                        .form-group
-                            label(for='inputtext')
-                                h2 #{api} || Enter #{textarea_input} Below
-                            textarea#inputtext.form-control(type='text' rows=8 name='inputtext') #{data_text}
-                        button.btn.btn-default.btn-success(type='submit') Submit
-                    hr
-                    h2 JSON Response
-                    textarea.form-control(type='text' rows=11 ) #{response}
+                .container-fluid
+                    .col-md-1
+                    .col-md-10
+                        .jumbotron
+                            h1 Alchemy API
+                            p.lead
+                                | The AlchemyAPI cloud platform makes it easy to create smart apps that deeply understand the world's conversations, reports and photos so you can align your business with customer preferences and intent.
+                            ul.nav.nav-pills.nav-justified
+                                    li(role='presentation')
+                                        a(href='http://www.alchemyapi.com/api' target='_blank') API Overview
+                                    li(role='presentation')
+                                        a(href='http://www.alchemyapi.com/' target='_blank') Documentation
+                                    li(role='presentation')
+                                        a(href='https://github.com/vish74/IBM-Watson-AlchemyAPI' target='_blank') Fork on Github
+                                    li(role='presentation')
+                                        a(href='#') Fork and Deploy on Bluemix
+                    .col-md-1
+                .container-fluid
+                    .col-md-1
+                    .col-md-10
+                        .jumbotron
+                            ul.nav.nav-pills.nav-justified
+                                li
+                                    a(href='/entity') Entity Extraction
+                                li
+                                    a(href='/keyword') Keyword Extraction
+                                li
+                                    a(href='/concept') Concept Tagging
+                                li
+
+                                    a(href='/textcat') Text Categorization
+                                li
+                                    a(href='/textext') Text Extraction
+                                li
+                                    a(href='/author') Author Extraction
+                                li
+                                    a(href='/language') Language Detection
+                                li
+                                    a(href='/title') Title Extraction
+
+                            ul.nav.nav-pills.nav-justified
+                                li
+                                    a(href='/relation') Relation Extraction
+                                li
+                                    a(href='/sentiment') Sentiment Analysis
+                                li
+                                    a(href='/feed') Feed Detection
+                                li
+                                    a(href='/microformats') Microformats Parsing
+                                li
+                                    a(href='/taxonomy') Taxonomy Parsing
+                                li
+                                    a(href='/image') Image Parsing
+                                li
+                                    a(href='/imagekey') Image Keywords Tagging
+                                li
+                                    a(href='/combined') Combined Parsing
+                            ul.nav.nav-pills.nav-justified
+                                li
+                                    a(href='/face') Face Recognition
+                    .col-md-1
+                .container-fluid
+                    .col-md-1
+                    .col-md-10
+                        .jumbotron(id='descr')
+                            p #{desc}
+                    .col-md-1
+                .container-fluid
+                    .row(style="margin-bottom:20px;")
+                        .container
+                            .col-md-1
+                            .col-sm-10
+                                form(role='form', method='POST', action=linklocation, id='form')
+                                    .form-group
+                                        label(for='inputtext')
+                                            h2 #{api} || Enter #{textarea_input} Below
+                                        textarea#inputtext.form-control(type='text' rows=8 name='inputtext') #{data_text}
+                                    button.btn.btn-default.btn-success(type='submit') Submit
+                                hr
+                                h2 JSON Response
+                                textarea.form-control(type='text' rows=11 ) #{response}
 
     script(src='/javascripts/jquery-1.11.3.min.js')
     script(src='/javascripts/bootstrap.min.js')
+
+    case desc_scroll
+        when 1
+            script(type='text/javascript').
+                $('html,body').animate({scrollTop: $("form").offset().top - 100},10);
+        when 2
+            script(type='text/javascript').
+                $('html,body').animate({scrollTop: $("form").offset().top},10);
