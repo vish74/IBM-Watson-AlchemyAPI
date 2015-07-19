@@ -68,7 +68,6 @@ app.get('/imagekey',restrict,routes.imagekey);
 app.get('/combined',restrict,routes.combined);
 app.get('/face',restrict,routes.face);
 
-
 //API call Routing
 app.post('/entity_call',restrict,routes.entity_call);
 app.post('/keyword_call',restrict,routes.keyword_call);
