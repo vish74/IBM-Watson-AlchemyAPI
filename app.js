@@ -14,9 +14,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-
 var routes = require('./routes/');
-
 var app = express();
 
 // get the app environment from Cloud Foundry
