@@ -88,6 +88,7 @@ app.post('/combined_call',restrict,routes.combined_call);
 app.post('/face_call',restrict,routes.face_call);
 
 
+//Change error handler
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
